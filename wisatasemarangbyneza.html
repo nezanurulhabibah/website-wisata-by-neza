@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisata Semarang - Jelajahi Keindahan Kota Atlas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-section {
+            background: url('coverwebsitewisatabyneza.png');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+        .category-active {
+            background-color: #3B82F6;
+            color: white;
+        }
+        .destination-card {
+            transition: transform 0.3s ease;
+        }
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .tab-active {
+            border-bottom: 3px solid #3B82F6;
+            color: #3B82F6;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold text-blue-600">Wisata Semarang by Neza</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                <a href="#categories" class="text-gray-700 hover:text-blue-600 font-medium">Kategori</a>
+                <a href="#destinations" class="text-gray-700 hover:text-blue-600 font-medium">Destinasi</a>
+                <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-2 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600">Beranda</a>
+            <a href="#categories" class="block py-2 text-gray-700 hover:text-blue-600">Kategori</a>
+            <a href="#destinations" class="block py-2 text-gray-700 hover:text-blue-600">Destinasi</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">Tentang</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section pt-20 flex items-center justify-center text-center text-black">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4x1 md:text-5xl font-bold mb-4">Informasi Berbagai Tempat Wisata<br>di Semarang</h1>
+            <p class="text-xl md:text-2xl mb-8">Temukan pesona wisata sejarah, alam, dan budaya di Semarang</p>
+            <a href="#destinations" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg inline-block">Jelajahi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section id="categories" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10">Jelajahi Berdasarkan Kategori</h2>
+            
+            <!-- Area Filter -->
+            <div class="flex justify-center mb-8">
+                <div class="flex space-x-2 bg-gray-100 p-1 rounded-lg">
+                    <button class="tab-area px-4 py-2 rounded-lg tab-active" data-area="all">Semua</button>
+                    <button class="tab-area px-4 py-2 rounded-lg" data-area="kota">Kota Semarang</button>
+                    <button class="tab-area px-4 py-2 rounded-lg" data-area="kabupaten">Kabupaten Semarang</button>
+                </div>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="category-filter px-4 py-2 bg-gray-100 rounded-lg category-active" data-category="all">Semua</button>
+                <button class="category-filter px-4 py-2 bg-gray-100 rounded-lg" data-category="history">Sejarah & Budaya</button>
+                <button class="category-filter px-4 py-2 bg-gray-100 rounded-lg" data-category="religious">Tempat Religi</button>
+                <button class="category-filter px-4 py-2 bg-gray-100 rounded-lg" data-category="nature">Alam & Pantai</button>
+                <button class="category-filter px-4 py-2 bg-gray-100 rounded-lg" data-category="entertainment">Hiburan & Keluarga</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Destinasi Wisata Semarang</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lawang Sewu -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="history">
+                    <img src="Lawang Sewu.jpg" alt="Lawang Sewu dengan arsitektur Belanda dan banyak pintu bersejarah" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Lawang Sewu</h3>
+                        <p class="text-gray-600 mb-4">Bangunan bersejarah ikonik di Semarang dengan arsitektur khas Belanda, dulunya kantor pusat Perusahaan Kereta Api Hindia Belanda.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Senin-Kamis 08.00-17.00, Jumat-Minggu 08.00-20.00</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Dewasa Rp20.000, Anak Rp10.000, Turis Asing Rp30.000</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1980.1072924575346!2d110.40958933836342!3d-6.983983835944019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4f19af0393%3A0x11304de4230ded0d!2sLawang%20Sewu%20Semarang!5e0!3m2!1sid!2sid!4v1758699695539!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Museum Ranggawarsita -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="history">
+                    <img src="Museum Ranggawarsita.jpg" alt="Museum Ranggawarsita dengan arsitektur Jawa tradisional" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Museum Ranggawarsita</h3>
+                        <p class="text-gray-600 mb-4">Museum ini menampilkan koleksi sejarah dan kebudayaan Indonesia, termasuk koleksi geologi, biologi, teknologi hingga fosil.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Selasa-Kamis 08.00-15.00, Jumat 08.00-14.00, Senin tutup</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Dewasa Rp6.000, Anak Rp4.000</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.202287434215!2d110.38133047410761!3d-6.985436068406202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b28c822d40d%3A0x67f776cdae733260!2sMuseum%20Ranggawarsita!5e0!3m2!1sid!2sid!4v1758733086388!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Museum Kota Lama -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="history">
+                    <img src="Museum Kota Lama.jpg" alt="Museum Kota Lama dengan arsitektur kolonial Belanda" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Museum Kota Lama</h3>
+                        <p class="text-gray-600 mb-4">Museum Kota Lama terletak di kawasan Kota Lama Semarang, menampilkan sejarah dan budaya lokal.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 09.00-15.30 WIB</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Gratis dengan registrasi via aplikasi</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3378012323283!2d110.42821897410737!3d-6.9694163682396875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70f3440cad0335%3A0xeb5fca3a7a7dea9c!2sMuseum%20Kota%20Lama!5e0!3m2!1sid!2sid!4v1758733319251!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masjid Agung Semarang -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="religious">
+                    <img src="Masjid Agung Semarang.jpg" alt="Masjid Agung Semarang dengan arsitektur megah dan kubah besar" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Masjid Agung Semarang</h3>
+                        <p class="text-gray-600 mb-4">Masjid raya dengan arsithttps://placeholder-image-service.onrender.com/image/400x300?prompt=Grand%20Mosque%20of%20Seektur megah dan fasilitas lengkap.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>03.00-07.00 dan 11.00-20.00 WIB (24 jam selama 10 hari terakhir Ramadhan)</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Tidak ada tiket masuk</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.218006100143!2d110.44254317410761!3d-6.983579768386875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708cb76c98241f%3A0x6afb73af24d41bf9!2sMasjid%20Agung%20Jawa%20Tengah%20(MAJT)!5e0!3m2!1sid!2sid!4v1758733564819!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gereja Blenduk -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="religious">
+                    <img src="Gereja Blenduk.jpg" alt="Gereja Blenduk dengan kubah besar dan arsitektur kolonial" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Gereja Blenduk</h3>
+                        <p class="text-gray-600 mb-4">Gereja Kristen tertua di Jawa Tengah yang berdiri tahun 1753 ini terkenal dengan kubah besar di atapnya.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 08.00-15.00 WIB (kecuali saat ada ibadah)</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Donasi masuk: Rp10.000 per orang</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3468660431395!2d110.42490177410738!3d-6.968343468228536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70f34349b8e345%3A0x8fd1c780aa92f074!2sGPIB%20Immanuel%20Semarang%20(Gereja%20Blenduk)!5e0!3m2!1sid!2sid!4v1758733665165!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sam Poo Kong -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="religious">
+                    <img src="Sam Poo Kong.jpg" alt="Klenteng Sam Poo Kong dengan arsitektur Tionghoa dan bangunan berwarna merah" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sam Poo Kong</h3>
+                        <p class="text-gray-600 mb-4">Kelenteng bersejarah dengan arsitektur Tionghoa yang megah dan area wisata religi serta budaya.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Senin-Jumat 08.00-20.00, Sabtu-Minggu 07.00-20.00</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp15.000-20.000 (hari biasa), Rp35.000-40.000 (akhir pekan)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.120687403289!2d110.39618717410787!3d-6.995064768506463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b46faaaaaab%3A0xef7fe551fe13bd76!2sSAM%20POO%20KONG!5e0!3m2!1sid!2sid!4v1758733733863!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagoda Avalokitesvara -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="religious">
+                    <img src="Pagoda Avalokitesvara.jpg" alt="Pagoda Avalokitesvara menara Buddha tinggi dengan arsitektur tradisional" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Pagoda Avalokitesvara</h3>
+                        <p class="text-gray-600 mb-4">Pagoda Avalokitesvara merupakan vihara tertinggi di Semarang yang menampilkan keindahan arsitektur Buddhis.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 07.00-21.00</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Gratis, donasi sukarela</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.337555042731!2d110.40659717410922!3d-7.086811469469555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70893b6870aa0f%3A0xcde64a0584b6e2e5!2sPagoda%20Avalokitesvara!5e0!3m2!1sid!2sid!4v1758733846663!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semarang Zoo -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="entertainment">
+                    <img src="Semarang Zoo.jpg" alt="Kebun Binatang Semarang dengan berbagai satwa dan pengunjung keluarga" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Semarang Zoo</h3>
+                        <p class="text-gray-600 mb-4">Kebun binatang dengan beragam satwa dari dalam dan luar negeri serta wahana edukasi dan hiburan keluarga.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Senin-Jumat 08.00-15.00, Sabtu-Minggu 08.00-16.00</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp20.000 (hari biasa), Rp25.000 (akhir pekan), Rp30.000 (hari libur)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.335961740163!2d110.28423372410737!3d-6.969634068241933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e705fcd9c89fc41%3A0x972aec622a49f8f1!2sSemarang%20Zoo!5e0!3m2!1sid!2sid!4v1758733993394!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai Marina -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="nature">
+                    <img src="Pantai Marina.jpg" alt="Pantai Marina dengan pasir putih dan ombak tenang" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Pantai Marina</h3>
+                        <p class="text-gray-600 mb-4">Pantai populer dengan pasir putih, ombak tenang, dan fasilitas wisata bahari seperti banana boat serta jet ski.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 06.00-18.00</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp5.000 (hari biasa), Rp7.000 (akhir pekan dan hari libur)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5111397732976!2d110.38675357410706!3d-6.948871668026753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70f4e56e4f8ea1%3A0xcf2bee72d0606dd0!2sPantai%20Marina!5e0!3m2!1sid!2sid!4v1758734131017!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantai Tirang -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kota" data-category="nature">
+                    <img src="Pantai Tirang.jpg" alt="Pantai Tirang dengan sunset indah dan pantai berpasir" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Pantai Tirang</h3>
+                        <p class="text-gray-600 mb-4">Pantai yang menyajikan pemandangan alam dan sunset menawan, cocok untuk keluarga dan muda-mudi.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 06.00-18.00</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp10.000 per orang, tambahan Rp10.000 untuk sewa gazebo</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15841.854614924769!2d110.34867113352544!3d-6.954505888758415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70f51438f917eb%3A0x700025efbbefcd30!2sPantai%20Tirang!5e0!3m2!1sid!2sid!4v1758734362057!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Candi Gedong Songo -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kabupaten" data-category="history">
+                    <img src="Candi Gedong Songo.jpg" alt="Kompleks Candi Gedong Songo di area perbukitan dengan struktur kuno" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Candi Gedong Songo</h3>
+                        <p class="text-gray-600 mb-4">Kompleks candi Hindu yang terletak di kawasan perbukitan dengan pemandangan alam yang indah dan udara sejuk.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 07.00-16.00 WIB</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp15.000 (lokal), Rp75.000 (asing)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.309053795284!2d110.33339808885499!3d-7.2055386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70875dcb714b8f%3A0xb048486c868cb64d!2sCandi%20Gedong%20V!5e0!3m2!1sid!2sid!4v1758734461182!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Museum Kereta Api Ambarawa -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kabupaten" data-category="history">
+                    <img src="Museum Kereta Api Ambarawa.jpg" alt="Museum Kereta Api Ambarawa dengan lokomotif uap kuno" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Museum Kereta Api Ambarawa</h3>
+                        <p class="text-gray-600 mb-4">Museum ini menampilkan berbagai koleksi lokomotif uap dan sejarah kereta api di Indonesia.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 08.00-16.00 WIB</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Dewasa Rp20.000, Anak Rp10.000, Turis Asing Rp30.000</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.7897442283547!2d110.40117697411196!3d-7.264752821376534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70819f66cfe1af%3A0x5d929f537b2631f6!2sMuseum%20Kereta%20Api%20Ambarawa!5e0!3m2!1sid!2sid!4v1758734651324!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monumen Palagan Ambarawa -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kabupaten" data-category="history">
+                    <img src="Monumen Palagan Ambarawa.jpg" alt="Monumen Palagan Ambarawa dengan patung dan display bersejarah" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Monumen Palagan Ambarawa</h3>
+                        <p class="text-gray-600 mb-4">Monumen ini merupakan tempat bersejarah pertempuran sengit antara pejuang Indonesia dan tentara Sekutu.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 08.00-18.00 WIB</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp7.500</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.832631781989!2d110.39998527411198!3d-7.259880771323634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70810ab48e4ae9%3A0x8363a6ad9f021eeb!2sMonumen%20Palagan%20Ambarawa!5e0!3m2!1sid!2sid!4v1758735566847!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saloka Theme Park -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kabupaten" data-category="entertainment">
+                    <img src="Saloka Theme Park.jpg" alt="Taman Hiburan Saloka dengan wahana dan hiburan keluarga" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saloka Theme Park</h3>
+                        <p class="text-gray-600 mb-4">Taman hiburan terbesar di Jawa Tengah yang menawarkan berbagai wahana permainan dan atraksi untuk segala usia.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Selasa-Minggu 10.00-18.00 WIB (Senin tutup)</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp120.000 (hari biasa), Rp150.000 (akhir pekan)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6486204407147!2d110.45644907411234!3d-7.280761671550647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708265970e9af7%3A0xa572723ddf2098e6!2sSaloka%20Theme%20Park!5e0!3m2!1sid!2sid!4v1758736317637!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dusun Semilir -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kabupaten" data-category="entertainment">
+                    <img src="Dusun Semilir.jpg" alt="Dusun Semilir taman edukasi dengan tema alam dan budaya" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Dusun Semilir</h3>
+                        <p class="text-gray-600 mb-4">Taman wisata edukasi dengan konsep alam dan budaya yang menyajikan wahana bermain, kuliner, dan berbelanja oleh-oleh.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 09.00-20.00 WIB</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp20.000 (hari biasa), Rp25.000 (akhir pekan)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1979.0111366043184!2d110.43097124442745!3d-7.238298300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7083601ed61489%3A0x6ba555dccf51ace1!2sDusun%20Semilir!5e0!3m2!1sid!2sid!4v1758736420413!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taman Bunga Celosia -->
+                <div class="destination-card bg-white rounded-xl shadow-md overflow-hidden" data-area="kabupaten" data-category="nature">
+                    <img src="Taman Bunga Celosia.jpg" alt="Taman Bunga Celosia dengan bunga warna-warni dan pemandangan indah" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Taman Bunga Celosia</h3>
+                        <p class="text-gray-600 mb-4">Taman Bunga Celosia merupakan taman bunga dengan berbagai jenis bunga yang cantik sebagai latar untuk berfoto.</p>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i>Setiap hari 08.00-17.00 WIB</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-ticket-alt mr-2"></i>Rp30.000 (hari biasa), Rp35.000 (akhir pekan)</p>
+                        </div>
+                        <div class="h-48 mb-4 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15832.546790955452!2d110.3280691554199!3d-7.225244999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7080b3163488d7%3A0x190ff6c3684e9814!2sTaman%20Waterboom%20Celosia%20Bandungan!5e0!3m2!1sid!2sid!4v1758736495953!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Tentang Wisata Semarang</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-8">Semarang menawarkan beragam destinasi wisata yang memadukan keindahan alam, kekayaan sejarah, dan keragaman budaya. Dari bangunan bersejarah peninggalan Belanda hingga tempat wisata modern, Semarang memiliki sesuatu untuk semua orang.</p>
+            <div class="flex flex-wrap justify-center gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Wisata Semarang</h3>
+                    <p>Jelajahi keindahan dan kekayaan budaya Kota Semarang dan Kabupaten Semarang melalui website ini.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-blue-400">Beranda</a></li>
+                        <li><a href="#categories" class="hover:text-blue-400">Kategori</a></li>
+                        <li><a href="#destinations" class="hover:text-blue-400">Destinasi</a></li>
+                        <li><a href="#about" class="hover:text-blue-400">Tentang</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Kontak</h3>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Semarang, Jawa Tengah</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-2"></i> wisatasemarangbyneza.html</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i> +62 812-1017-7410</p>
+                    <p class="mb-2"><i class="fab fa-instagram text-xl"></i> nezaaa.nh_</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>© 2025 Wisata Semarang by Neza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const areaButtons = document.querySelectorAll('.tab-area');
+            const categoryButtons = document.querySelectorAll('.category-filter');
+            const destinationCards = document.querySelectorAll('.destination-card');
+            
+            // Set active tab
+            function setActiveTab(buttons, activeButton) {
+                buttons.forEach(btn => btn.classList.remove('tab-active', 'category-active'));
+                activeButton.classList.add('tab-active', 'category-active');
+            }
+            
+            // Filter destinations
+            function filterDestinations() {
+                const activeArea = document.querySelector('.tab-area.tab-active').dataset.area;
+                const activeCategory = document.querySelector('.category-filter.category-active').dataset.category;
+                
+                destinationCards.forEach(card => {
+                    const cardArea = card.dataset.area;
+                    const cardCategory = card.dataset.category;
+                    
+                    const areaMatch = activeArea === 'all' || cardArea === activeArea;
+                    const categoryMatch = activeCategory === 'all' || cardCategory === activeCategory;
+                    
+                    if (areaMatch && categoryMatch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Add event listeners to area buttons
+            areaButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    setActiveTab(areaButtons, this);
+                    filterDestinations();
+                });
+            });
+            
+            // Add event listeners to category buttons
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    setActiveTab(categoryButtons, this);
+                    filterDestinations();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
